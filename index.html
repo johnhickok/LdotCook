@@ -2,8 +2,41 @@
 <head>
   <meta charset="utf-8" />
   <title>LdotCook</title>
+<style> 
+#mytests {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#mytests td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#mytests tr:nth-child(even){background-color: #f2f2f2;}
+
+#mytests tr:hover {background-color: #ddd;}
+
+#mytests th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #b3b3b3;
+  color: white;
+}
+</style>
 </head>
 <p>
-<a href="test1.html" target="_blank">test1</a>: Start with sample from Esri, add tool to select coordinates.
+<table id="mytests">
+<tr>
+<th>Test</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><a href="test1.html" target="_blank">test1</a></td>
+<td>Start with <a href="https://esri.github.io/esri-leaflet/examples/geocoding-control.html" target="_blank">sample</a> from Esri, and add a tool to select coordinates (<a href="https://github.com/Esri/esri-leaflet-geocoder" target="_blank">GitHub</a>).</td>
+</tr>
+</table>
 </p>
 </html>
