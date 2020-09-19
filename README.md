@@ -21,3 +21,6 @@
 <p>
 <a href="https://locatepress.com/lcb" target="_blank">Leaflet Cookbook</a>: If you prefer a book, here is my favorite.
 </p>
+<h3>Some Data<h3>
+<a href="https://egis-lacounty.hub.arcgis.com/datasets/dcfs-gis-data-regional-office-service-areas">DCFS Service Areas and Office Locations</a>
+<a href="https://egis-lacounty.hub.arcgis.com/datasets/law-enforcement-reporting-districts">Law Enforcement Jurisdictions</a>
