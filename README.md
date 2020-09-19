@@ -1,5 +1,5 @@
 # LdotCook
-Some Resources
+<h2>Some Resources</h2>
 <p>
 <a href="https://leafletjs.com/" target="_blank">Leaflet Home Page</a>: Note the tutorials, docs, downloads, plugins, and code samples.
 <ul>
