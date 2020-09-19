@@ -23,7 +23,7 @@
 </p>
 <p>Some Data</p>
 <ul>
+<li><a href="https://egis-lacounty.hub.arcgis.com/datasets/la-county-service-planning-area">Service Planning Areas (SPA)</a></li>
 <li><a href="https://egis-lacounty.hub.arcgis.com/datasets/dcfs-gis-data-regional-office-service-areas">DCFS Service Areas and Office Locations</a></li>
 <li><a href="https://egis-lacounty.hub.arcgis.com/datasets/law-enforcement-reporting-districts">Law Enforcement Jurisdictions</a></li>
-<li><a href="https://egis-lacounty.hub.arcgis.com/datasets/la-county-service-planning-area">Service Planning Areas (SPA)</a></li>
 </ul>
