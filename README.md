@@ -3,7 +3,7 @@
 <p>
 <a href="https://leafletjs.com/" target="_blank">Leaflet Home Page</a>: Note the tutorials, docs, downloads, plugins, and code samples.
 <ul>
-<li><a href="https://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">Leaflet Providers</a>: When you are new to Leaflet, here is a useful page for adding basemap layers for free from various providers.</li>
+<li><a href="https://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">Leaflet Providers</a>: When you are new to Leaflet, here is a useful page for adding basemap layers from various providers.</li>
 </ul>
 </p>
 <p>
