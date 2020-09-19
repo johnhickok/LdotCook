@@ -22,9 +22,8 @@
 <a href="https://locatepress.com/lcb" target="_blank">Leaflet Cookbook</a>: If you prefer a book, here is my favorite.
 </p>
 <p>Some Data</p>
-<p>
-<a href="https://egis-lacounty.hub.arcgis.com/datasets/dcfs-gis-data-regional-office-service-areas">DCFS Service Areas and Office Locations</a>
-</p>
-<p>
-<a href="https://egis-lacounty.hub.arcgis.com/datasets/law-enforcement-reporting-districts">Law Enforcement Jurisdictions</a>
-</p>
+<ul>
+<li><a href="https://egis-lacounty.hub.arcgis.com/datasets/dcfs-gis-data-regional-office-service-areas">DCFS Service Areas and Office Locations</a></li>
+<li><a href="https://egis-lacounty.hub.arcgis.com/datasets/law-enforcement-reporting-districts">Law Enforcement Jurisdictions</a></li>
+<li><a href="https://egis-lacounty.hub.arcgis.com/datasets/la-county-service-planning-area">Service Planning Areas (SPA)</a></li>
+</ul>
