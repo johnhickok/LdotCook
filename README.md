@@ -10,6 +10,7 @@
 <a href="https://esri.github.io/esri-leaflet/" target="_blank">Esri's Leaflet Page</a>: Esri's contributions are extensive. Here are a few of Esri's plugins worth noting.
 <ul>
 <li><a href="https://esri.github.io/esri-leaflet/examples/geocoding-control.html" target="_blank">Geocoding control</a>: Start here.</li>
+<li><a href="https://esri.github.io/esri-leaflet/examples/showing-a-basemap.html" target="_blank">Showing an ArcGIS Basemap</a>: Note Esri's terms of use and attribution requirements. If Esri's maps are a little laggy, consider Mapbox for speed.</li>
 <li><a href="https://esri.github.io/esri-leaflet/examples/spatial-queries.html" target="_blank">Spatial Queries on a Feature Layer</a></li>
 <li><a href="https://esri.github.io/esri-leaflet/examples/query-no-map.html" target="_blank">Query without a map</a></li>
 </ul>
