@@ -16,13 +16,13 @@
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiamhpY2tvayIsImEiOiJjazMwcXltMmwwMTkzM2JvYXJmaWJ4cHFyIn0.TfSpGNZ1DEtgdAWCGk77yQ';
-var map = L.map('map').setView([38.97416, -95.23252], 15);
+var map = L.map('map').setView([34.042747, -118.252042], 9); 
 
 // Add tiles from the Mapbox Static Tiles API
 // (https://docs.mapbox.com/api/maps/#static-tiles)
 // Tiles are 512x512 pixels and are offset by 1 zoom level
 L.tileLayer(
-    'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+    'https://api.mapbox.com/styles/v1/jhickok/cke367r9o02rn19mo79ktvq1l/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
         tileSize: 512,
         zoomOffset: -1,
         attribution: '© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
