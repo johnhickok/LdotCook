@@ -1,5 +1,10 @@
 # enter script, lat, lon from Google Maps
 # python pg_layers.py 33.876381, -118.102511
+
+# for evaluating db platforms, this app is timed
+from datetime import datetime
+timestart = datetime.now()
+
 import psycopg2
 from sys import argv
 
@@ -272,3 +277,7 @@ else:
     print("")
   
   conn.close()
+
+print("")
+print("Elapsed Time (h:mm:ss.ssssss): ", datetime.now() - timestart)
+
