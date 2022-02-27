@@ -15,7 +15,7 @@ mylon = argv[2]
 myloc = "ST_Transform(ST_GeomFromText('POINT(" + mylon + " " + mylat + ")',4326),2229)"
 
 # Connect to database
-conn = psycopg2.connect("host=localhost dbname=ravs_data user=postgres password=postgres") 
+conn = psycopg2.connect("host=<your host id> dbname=ravs_data user=<your user name> password=<your password>") 
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
