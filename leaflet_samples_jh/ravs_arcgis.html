@@ -1,0 +1,107 @@
+<!-- ArcGIS Map demo - Leif 10/1/2020
+	ArcGIS is a GIS for working with maps and geographic information maintained by
+  Esri.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>LAC DCFS RAVS - ArcGIS</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    #logoContainer { position: fixed; margin: 0; width: 400px; height: 100px;
+      top: 10px; left: 50%; transform: translate(-50%); z-index: 400;
+      background: white; padding: 10px;  }
+    .logo { vertical-align: middle;; width: 83px; height: 83px; }
+    .text { vertical-align: middle;; text-align: center; }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/css/main.css">
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <script src="https://js.arcgis.com/4.17/"></script>
+  <script>
+  require([
+    "esri/Map",
+    "esri/views/MapView",
+    "esri/widgets/Search",
+    "esri/widgets/BasemapToggle"
+    //"esri/widgets/BasemapGallery"
+  ], function(Map, MapView, Search, BasemapToggle /*, BasemapGallery*/) {
+
+      var map = new Map({
+        basemap: "topo-vector"
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-118.24532, 34.05398],
+        zoom: 10
+      });
+
+      // Search widget
+      var search = new Search({
+        view: view
+      });
+      view.ui.add(search, "top-right");
+
+      var basemapToggle = new BasemapToggle({
+        view: view,
+        nextBasemap: "satellite"
+      });
+      view.ui.add(basemapToggle, "top-right");
+
+      // var basemapGallery = new BasemapGallery({
+      //   view: view,
+      //   source: {
+      //     portal: {
+      //       url: "https://www.arcgis.com",
+      //       useVectorBasemaps: false // Load vector tile basemaps
+      //     }
+      //   }
+      // });
+      // view.ui.add(basemapGallery, "top-right");
+
+      view.on("click", function (evt) {
+        search.clear();
+        view.popup.clear();
+        if (search.activeSource) {
+          var geocoder = search.activeSource.locator; // World geocode service
+          var params = {
+            location: evt.mapPoint
+          };
+          geocoder.locationToAddress(params).then(
+            function (response) {
+              // Show the address found
+              var address = response.address;
+              showPopup(address, evt.mapPoint);
+            },
+            function (err) {
+              // Show no address found
+              showPopup("No address found.", evt.mapPoint);
+            }
+          );
+        }
+      });
+
+      function showPopup(address, pt) {
+        view.popup.open({
+          title:
+            +Math.round(pt.longitude * 100000) / 100000 +
+            "," +
+            Math.round(pt.latitude * 100000) / 100000,
+          content: address,
+          location: pt
+        });
+      }
+    });
+  </script>
+</body>
+</html>
