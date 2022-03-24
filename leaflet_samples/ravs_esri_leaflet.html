@@ -1,0 +1,121 @@
+<!-- Los Angeles County DCFS RAVS demo - Leif 10/1/2020
+  Esri Leaflet - https://esri.github.io/esri-leaflet/
+	Esri Leaflet is plugin for Leaflet that simplified integrating ArcGIS services
+  into Leaflet. A lightweight set of tools for using ArcGIS services with Leaflet.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>LAC DCFS RAVS</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+  <!-- Load Leaflet CSS from CDN -->
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+  <!-- Load Esri Leaflet Geocoder CSS from CDN -->
+  <link rel="stylesheet"
+    href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css"
+    integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+    crossorigin="">
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; right: 0; left: 0; }
+    #logoContainer { position: fixed; margin: 0; width: 380px; height: 90px;
+      top: 10px; left: 50%; transform: translate(-50%); z-index: 400;
+      background: white; padding: 10px;  }
+    .logo { width: 83px; height: 83px; }
+    .text { vertical-align: top; text-align: center; }
+    #basemaps-wrapper {
+      position: absolute; top: 10px; right: 10px; z-index: 400;
+      background: white; padding: 10px; }
+    #basemaps { margin-bottom: 5px; }
+  </style>
+</head>
+
+<body>
+<div id="map"></div>
+
+<div id="basemaps-wrapper" class="leaflet-bar">
+  <select id="basemaps">
+    <option value="Topographic">Topographic</option>
+    <option value="Streets">Streets</option>
+    <option value="NationalGeographic">National Geographic</option>
+    <option value="Imagery">Imagery</option>
+    <option value="Physical">Physical</option>
+  <!--
+    <option value="Oceans">Oceans</option>
+    <option value="Gray">Gray</option>
+    <option value="DarkGray">Dark Gray</option>
+    <option value="ImageryClarity">Imagery (Clarity)</option>
+    <option value="ImageryFirefly">Imagery (Firefly)</option>
+    <option value="ShadedRelief">Shaded Relief</option>
+  -->
+  </select>
+</div>
+
+<!-- Load Leaflet JS from CDN -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+<!-- Load Esri Leaflet JS from CDN -->
+<script src="https://unpkg.com/esri-leaflet@2.5.0/dist/esri-leaflet.js"
+  integrity="sha512-ucw7Grpc+iEQZa711gcjgMBnmd9qju1CICsRaryvX7HJklK0pGl/prxKvtHwpgm5ZHdvAil7YPxI1oWPOWK3UQ=="
+  crossorigin=""></script>
+<!-- Load Esri Leaflet Geocoder JS from CDN -->
+<script src="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.js"
+  integrity="sha512-HrFUyCEtIpxZloTgEKKMq4RFYhxjJkCiF5sDxuAokklOeZ68U2NPfh4MFtyIVWlsKtVbK5GD2/JzFyAfvT5ejA=="
+  crossorigin=""></script>
+<script>
+  var map = L.map('map').setView([34.052235, 	-118.243683], 10);
+  var layer = L.esri.basemapLayer('Topographic').addTo(map);
+  var layerLabels;
+
+  var searchControl = L.esri.Geocoding.geosearch().addTo(map);
+  var results = L.layerGroup().addTo(map);
+  searchControl.on('results', function (data) {
+    results.clearLayers();
+    var marker;
+    for (var i = data.results.length - 1; i >= 0; i--) {
+      marker = L.marker(data.results[i].latlng);
+      marker.bindPopup(data.results[i].text).openPopup();
+      results.addLayer(marker);
+    }
+  });
+
+  function setBasemap (basemap) {
+    if (layer) {
+      map.removeLayer(layer);
+    }
+    layer = L.esri.basemapLayer(basemap);
+    map.addLayer(layer);
+
+    if (layerLabels) {
+      map.removeLayer(layerLabels);
+    }
+    if (
+      basemap === 'ShadedRelief' ||
+      basemap === 'Oceans' ||
+      basemap === 'Gray' ||
+      basemap === 'DarkGray' ||
+      basemap === 'Terrain'
+    ) {
+      layerLabels = L.esri.basemapLayer(basemap + 'Labels');
+      map.addLayer(layerLabels);
+    } else if (basemap.includes('Imagery')) {
+      layerLabels = L.esri.basemapLayer('ImageryLabels');
+      map.addLayer(layerLabels);
+    }
+  }
+
+  document
+    .querySelector('#basemaps')
+    .addEventListener('change', function (e) {
+      var basemap = e.target.value;
+      setBasemap(basemap);
+    });
+</script>
+</body>
+</html>
